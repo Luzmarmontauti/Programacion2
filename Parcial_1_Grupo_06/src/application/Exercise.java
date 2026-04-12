@@ -21,4 +21,5 @@ public abstract class Exercise {
 	
 	protected abstract void exerciseLogic();
 
+
 }
