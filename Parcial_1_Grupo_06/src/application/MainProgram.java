@@ -1,5 +1,6 @@
 package application;
 import java.util.Scanner;
+import listModule.ListExercise;
 
 public class MainProgram {
 	
@@ -18,6 +19,8 @@ public class MainProgram {
 	private void run() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
+		
+		this.exercise = new ListExercise(sc);
 		
 		while (running) {
 			System.out.println("-----Main Program-----");

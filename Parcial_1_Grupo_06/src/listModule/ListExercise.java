@@ -1,4 +1,5 @@
 package listModule;
+
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,136 +7,136 @@ import java.util.Scanner;
 import application.Exercise;
 
 public class ListExercise extends Exercise {
-	private int currentPhase = 0;
-	private boolean firstTime = true;
-	
-	private List<String>list;
-	
+    private int currentPhase = 0;
+    private boolean firstTime = true;
+    private List<String> list;
 
-	
-	public ListExercise(Scanner scanner) {
-		super(scanner);
-		
-		//list = new ArrayList<>();
-		list = new LinkedList<>();
-	}
-	
-	@Override
-	protected void exerciseLogic() {
-		switch(currentPhase) {
-		case 0:
-			menuLogic();
-			break;
-			
-		case 1:
-			addLogic();
-			break;
-		
-		case 2:
-			removeByIndexLogic();
-			break;
-			
-		case 3:
-			removeByReferenceLogic();
-			break;
-			
-		case 4:
-			clearListLogic();
-		    break;
-		default:
-			System.out.println("Fin de las opciones");
-		}
-	}
-	
-	
+    public ListExercise(Scanner scanner) {
+        super(scanner);
+        
+        this.list = new ArrayList<>();
+       
+    }
 
-	private void menuLogic() {
-		if(firstTime) {
-			System.out.println("Bienvenidoooooooooooooooooooooooooooo");
-			firstTime = false;
-		}
-		else {
-			System.out.println("Estado actual");
-		}
-		
-		String fullList = "";
-		
-		for (int i = 0; i < list.size(); i++) {
-		    System.out.print(list.get(i) + (i < list.size() - 1 ? ", " : ""));
-		}
-		
-		System.out.println("Contenido de la lista: " + "Lista" + fullList + "Elementos de la lista " + list.size() + "Mostrar si la lista esta vacia " + list.isEmpty());
-		System.out.println("Elige alguna de las siguientes opciones: " + 
-							"\n 1. Agregar un elemento a la lista" + 
-							"\n 2. Remover un elemento por indice" + 
-							"\n 3. Remover un elemento por referencia" +
-							"\n 4. Limpiar la lista");
-		
-		currentPhase = scanner.nextInt();
-	    scanner.nextLine(); 
-	    
-	    if (currentPhase == 0) {
-	        running = false; 
-	    }
-	
-	}
-	
-	
-	private void addLogic() {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Escribe el elemento lo que deseas agregar a la lista");
-		
-		String elementoNuevo = scanner.nextLine();
-		list.add(elementoNuevo);
-		currentPhase = 0;
-		
-		
-	}
+    @Override
+    protected void exerciseLogic() {
+        switch (currentPhase) {
+            case 0:
+                menuLogic();
+                break;
+            case 1:
+                addLogic();
+                break;
+            case 2:
+                removeByIndexLogic();
+                break;
+            case 3:
+                removeByReferenceLogic();
+                break;
+            case 4:
+                clearListLogic();
+                break;
+            default:
+                System.out.println("Opción no válida, volviendo al menú.");
+                currentPhase = 0;
+                break;
+        }
+    }
 
-	private void removeByIndexLogic() {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Escribe lo que deseas eliminar");
-		int elementoEliminado = scanner.nextInt();
-		scanner.nextLine();
-		
-		if (elementoEliminado >= 0 && elementoEliminado < list.size()) {
-	        String borrado = list.remove(elementoEliminado); 
-	        System.out.println("Has borrado: " + borrado);
-	    } else {
-	        System.out.println("Esa posición no existe.");
-	    }
-	    currentPhase = 0; 
-		
-	}
+    private void menuLogic() {
+        if (firstTime) {
+            System.out.println("\n***************************************");
+            System.out.println("   ¡Bienvenido al módulo de Listas!   ");
+            System.out.println("***************************************");
+            firstTime = false;
+        }
 
-	
-	private void removeByReferenceLogic() {
-		System.out.println("Escribe la palabra que necesitas eliminar");
-		String palabraEliminada = scanner.nextLine();
-		scanner.nextLine();
-		
-		if (!list.contains(palabraEliminada)) { 
-	        System.out.println("La palabra no existe ");
-	    } else {
-	        System.out.println("Palabra eliminada con exito, la nueva lista es: " + list);
-	    }
-	    currentPhase = 0; 
-		
-	}
-	
+        System.out.println("\n--- ESTADO ACTUAL DE LA LISTA ---");
+        
+        
+        System.out.print("Elementos: [");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + (i < list.size() - 1 ? ", " : ""));
+        }
+        System.out.println("]");
 
-	private void clearListLogic() {
-		// TODO Auto-generated method stub
-		
-		list.clear();
-		System.out.println("La lista ahora está vacía.");
-		currentPhase = 0;
-		
-	}
+        System.out.println("Cantidad de elementos: " + list.size());
+        System.out.println("¿La lista está vacía?: " + (list.isEmpty() ? "Sí" : "No"));
+        
+        System.out.println("\nElija una opción:");
+        System.out.println("1. Agregar un elemento");
+        System.out.println("2. Remover por índice");
+        System.out.println("3. Remover por palabra (referencia)");
+        System.out.println("4. Limpiar toda la lista");
+        System.out.println("0. Salir al Menú Principal");
 
+        
+        if (scanner.hasNextInt()) {
+            currentPhase = scanner.nextInt();
+            scanner.nextLine(); 
+            
+            if (currentPhase == 0) {
+                running = false;
+            }
+        } else {
+            System.out.println("Error: Ingrese un número.");
+            scanner.nextLine(); 
+        }
+    }
 
-	
-	
+    private void addLogic() {
+        System.out.println("\nEscribe el elemento que deseas agregar:");
+        String elementoNuevo = scanner.nextLine();
+        list.add(elementoNuevo);
+        System.out.println("¡Agregado!");
+        currentPhase = 0; //
+    }
+
+    private void removeByIndexLogic() {
+        if (list.isEmpty()) {
+            System.out.println("La lista está vacía, nada que borrar.");
+        } else {
+            System.out.println("\nEscribe el índice (posición) a eliminar (0 a " + (list.size() - 1) + "):");
+            if (scanner.hasNextInt()) {
+                int indice = scanner.nextInt();
+                scanner.nextLine(); 
+
+                if (indice >= 0 && indice < list.size()) {
+                    String borrado = list.remove(indice);
+                    System.out.println("Has borrado: " + borrado);
+                } else {
+                    System.out.println("Índice fuera de rango.");
+                }
+            }
+        }
+        currentPhase = 0;
+    }
+
+    private void removeByReferenceLogic() {
+        if (list.isEmpty()) {
+            System.out.println("La lista está vacía.");
+        } else {
+            System.out.println("\nEscribe la palabra exacta que necesitas eliminar:");
+            String palabra = scanner.nextLine();
+
+            
+            if (list.remove(palabra)) {
+                System.out.println("Elemento '" + palabra + "' eliminado con éxito.");
+            } else {
+                System.out.println("No se encontró la palabra '" + palabra + "' en la lista.");
+            }
+        }
+        currentPhase = 0;
+    }
+
+    private void clearListLogic() {
+        list.clear();
+        System.out.println("\nLista vaciada por completo.");
+        currentPhase = 0;
+    }
 }
+
+
+
+
+
