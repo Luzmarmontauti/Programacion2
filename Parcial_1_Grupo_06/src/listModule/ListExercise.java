@@ -1,5 +1,4 @@
 package listModule;
-
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +8,10 @@ import application.Exercise;
 public class ListExercise extends Exercise {
     private int currentPhase = 0;
     private boolean firstTime = true;
-    private List<String> list;
 
     public ListExercise(Scanner scanner) {
         super(scanner);
         
-        this.list = new ArrayList<>();
        
     }
 
