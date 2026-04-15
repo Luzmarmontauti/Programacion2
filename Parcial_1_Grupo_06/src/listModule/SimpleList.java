@@ -8,9 +8,10 @@ public interface SimpleList <E> {
 	public void clear();
 	public boolean contains(Object object);
 	public E get(int index);
-	public E set(int index);
+	public E set(int index, E element);
 	public int size();
 	public boolean isEmpty();
+	
 	
 	
 	

@@ -1,6 +1,4 @@
 package listModule;
-import java.util.LinkedList;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import application.Exercise;
@@ -8,9 +6,10 @@ import application.Exercise;
 public class ListExercise extends Exercise {
     private int currentPhase = 0;
     private boolean firstTime = true;
-
+    private SimpleList list;
     public ListExercise(Scanner scanner) {
         super(scanner);
+        this.list = new SimpleLinkedList();
         
        
     }
@@ -86,7 +85,7 @@ public class ListExercise extends Exercise {
         String elementoNuevo = scanner.nextLine();
         list.add(elementoNuevo);
         System.out.println("¡Agregado!");
-        currentPhase = 0; //
+        currentPhase = 0;
     }
 
     private void removeByIndexLogic() {
