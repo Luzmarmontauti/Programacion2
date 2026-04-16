@@ -41,9 +41,8 @@ public class ListExercise extends Exercise {
 
     private void menuLogic() {
         if (firstTime) {
-            System.out.println("\n***************************************");
-            System.out.println("   ¡Bienvenido al módulo de Listas!   ");
-            System.out.println("***************************************");
+            System.out.println("¡Bienvenido a tu primer ingreso!");
+            System.out.println("--------------------");
             firstTime = false;
         }
 
