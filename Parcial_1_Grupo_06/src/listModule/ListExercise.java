@@ -98,7 +98,7 @@ public class ListExercise extends Exercise {
                 scanner.nextLine(); 
 
                 if (indice >= 0 && indice < list.size()) {
-                    String borrado = list.remove(indice);
+                    String borrado = (String) list.remove(indice);
                     System.out.println("Has borrado: " + borrado);
                 } else {
                     System.out.println("Índice fuera de rango.");
