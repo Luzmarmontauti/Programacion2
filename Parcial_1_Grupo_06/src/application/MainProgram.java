@@ -6,7 +6,7 @@ import listModule.ListExercise; // Importamos tu clase de listas
 public class MainProgram {
     
     private boolean running = true;
-    private Exercise exercise; // Esta es la referencia a la clase padre
+    private Exercise exercise; 
     
     public static void main(String[] args) {
         MainProgram program = new MainProgram();        
@@ -16,8 +16,7 @@ public class MainProgram {
     private void run() {
         Scanner sc = new Scanner(System.in);
         
-        // Inicializamos el ejercicio. Le pasamos 'sc' (el Scanner de este Main).
-        // Esto se hace una sola vez para que el objeto esté listo.
+        
         this.exercise = new ListExercise(sc);
         
         while (running) {
@@ -26,12 +25,12 @@ public class MainProgram {
             System.out.println("0. Terminar el programa");
             System.out.print("Seleccione una opción: ");
             
-            // Usamos nextInt para capturar el número
+            
             int selectExercise = sc.nextInt();
-            sc.nextLine(); // LIMPIEZA DE BUFFER (Siempre después de nextInt)
+            sc.nextLine(); 
             
             if (selectExercise == 1) {
-                // Aquí llamamos al método run() que heredó de Exercise
+                
                 exercise.run(); 
             }
             else if (selectExercise == 0) {
